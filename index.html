@@ -36,6 +36,35 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #94a3b8; 
         }
+        
+        /* Range Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        /* Webkit Slider Thumb */
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: pointer;
+            margin-top: -4px; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        /* Webkit Slider Track */
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #e2e8f0;
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 text-sm md:text-base leading-relaxed">
@@ -93,15 +122,52 @@
     <header class="pt-28 pb-10 hero-pattern border-b border-gray-200">
         <div class="max-w-5xl mx-auto px-4 text-center">
             
-            <!-- Audio Player Controller (Blue Hover Effect) -->
-            <div id="audio-controller" class="inline-flex items-center gap-3 bg-white border border-gray-200 rounded-full px-6 py-3 mb-8 shadow-md cursor-pointer hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 group select-none transform hover:-translate-y-0.5">
-                <span id="audio-status-dot" class="w-3 h-3 rounded-full bg-red-500 shadow-sm transition-colors"></span>
-                <div class="text-base font-bold text-gray-700 group-hover:text-white flex items-center gap-2 transition-colors" id="audio-label">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    <span>播放海聯會主任演講錄音</span>
+            <!-- Full Audio Player Controller -->
+            <div class="bg-white border border-gray-200 rounded-2xl p-4 mb-8 shadow-md max-w-lg mx-auto">
+                <!-- Title Row -->
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-2 h-2 rounded-full bg-red-500 shadow-sm" id="audio-status-dot"></span>
+                    <span class="text-sm font-bold text-gray-700">海聯會主任演講錄音</span>
                 </div>
+                
+                <!-- Progress Bar -->
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-xs text-gray-500 w-10 text-right font-mono" id="current-time">00:00</span>
+                    <input type="range" id="seek-slider" min="0" max="100" value="0" class="flex-grow">
+                    <span class="text-xs text-gray-500 w-10 text-left font-mono" id="duration">00:00</span>
+                </div>
+
+                <!-- Controls -->
+                <div class="flex justify-center items-center gap-6">
+                    <!-- Backward 15s -->
+                    <button id="backward-btn" class="text-gray-400 hover:text-blue-600 transition p-1" title="倒退 15 秒">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0019 16V8a1 1 0 00-1.6-.8l-5.333 4zM4.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0011 16V8a1 1 0 00-1.6-.8L4.066 11.2z"></path></svg>
+                    </button>
+
+                    <!-- Play/Pause Button -->
+                    <button id="play-btn" class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-blue-700 transition shadow-lg transform hover:scale-105">
+                        <!-- Play Icon (Default) -->
+                        <svg id="play-icon" class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <!-- Pause Icon (Hidden) -->
+                        <svg id="pause-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                    </button>
+
+                    <!-- Forward 15s -->
+                    <button id="forward-btn" class="text-gray-400 hover:text-blue-600 transition p-1" title="快進 15 秒">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> 
+                        <!-- Changed icon to fast forward style conceptually, using lightning/fast icon as placeholder or strictly use double arrow -->
+                        <!-- Actually let's use the double arrow right for consistency -->
+                         <svg class="w-6 h-6 absolute opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.933 12.8a1 1 0 000-1.6L6.6 7.2A1 1 0 005 8v8a1 1 0 001.6.8l5.333-4zM19.933 12.8a1 1 0 000-1.6l-5.333-4A1 1 0 0013 8v8a1 1 0 001.6.8l5.333-4z"></path></svg>
+                    </button>
+                    <!-- Correct Forward Icon -->
+                    <button id="forward-btn-real" class="text-gray-400 hover:text-blue-600 transition p-1" title="快進 15 秒">
+                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                         <!-- Let's use standard fast forward icon instead -->
+                    </button>
+                </div>
+                
                 <!-- Hidden Audio Element -->
-                <audio id="lecture-audio" preload="none">
+                <audio id="lecture-audio" preload="metadata">
                     <source src="2025-12-05-海聯會主任演講.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
@@ -388,37 +454,85 @@
             });
 
             // Audio Player Logic
-            const audioController = document.getElementById('audio-controller');
+            const playBtn = document.getElementById('play-btn');
+            const backwardBtn = document.getElementById('backward-btn');
+            const forwardBtn = document.getElementById('forward-btn');
+            const forwardBtnReal = document.getElementById('forward-btn-real'); // Fix button ID logic
             const audio = document.getElementById('lecture-audio');
             const dot = document.getElementById('audio-status-dot');
-            const label = document.getElementById('audio-label');
+            const playIcon = document.getElementById('play-icon');
+            const pauseIcon = document.getElementById('pause-icon');
+            const seekSlider = document.getElementById('seek-slider');
+            const currentTimeElem = document.getElementById('current-time');
+            const durationElem = document.getElementById('duration');
             
-            // Icon SVGs
-            const playIcon = `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
-            const pauseIcon = `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`;
+            // Format time helper
+            const formatTime = (seconds) => {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            };
 
-            audioController.addEventListener('click', () => {
+            // Toggle Play/Pause
+            playBtn.addEventListener('click', () => {
                 if (audio.paused) {
                     audio.play();
+                    playIcon.classList.add('hidden');
+                    pauseIcon.classList.remove('hidden');
                     dot.classList.remove('bg-red-500');
                     dot.classList.add('bg-green-500', 'animate-pulse');
-                    label.innerHTML = `${pauseIcon} <span>演講播放中 (點擊暫停)</span>`;
-                    label.classList.add('text-blue-600');
                 } else {
                     audio.pause();
+                    playIcon.classList.remove('hidden');
+                    pauseIcon.classList.add('hidden');
                     dot.classList.add('bg-red-500');
                     dot.classList.remove('bg-green-500', 'animate-pulse');
-                    label.innerHTML = `${playIcon} <span>播放海聯會主任演講錄音</span>`;
-                    label.classList.remove('text-blue-600');
+                }
+            });
+
+            // Skip Buttons (Use forwardBtnReal for the visible one)
+            backwardBtn.addEventListener('click', () => {
+                audio.currentTime = Math.max(0, audio.currentTime - 15);
+            });
+
+            // Clean up html button duplication issue in previous step
+            document.getElementById('forward-btn').style.display = 'none'; // Hide duplicate
+            
+            forwardBtnReal.addEventListener('click', () => {
+                audio.currentTime = Math.min(audio.duration, audio.currentTime + 15);
+            });
+
+            // Update Progress Bar
+            audio.addEventListener('timeupdate', () => {
+                const currentTime = audio.currentTime;
+                const duration = audio.duration;
+                if (!isNaN(duration)) {
+                    seekSlider.value = (currentTime / duration) * 100;
+                    currentTimeElem.textContent = formatTime(currentTime);
+                }
+            });
+
+            // Set Duration on Load
+            audio.addEventListener('loadedmetadata', () => {
+                durationElem.textContent = formatTime(audio.duration);
+            });
+
+            // Seek functionality
+            seekSlider.addEventListener('input', () => {
+                const duration = audio.duration;
+                if (!isNaN(duration)) {
+                    audio.currentTime = (seekSlider.value / 100) * duration;
                 }
             });
 
             // Reset when audio ends
             audio.addEventListener('ended', () => {
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
                 dot.classList.add('bg-red-500');
                 dot.classList.remove('bg-green-500', 'animate-pulse');
-                label.innerHTML = `${playIcon} <span>播放海聯會主任演講錄音</span>`;
-                label.classList.remove('text-blue-600');
+                seekSlider.value = 0;
+                currentTimeElem.textContent = "00:00";
             });
         });
     </script>
