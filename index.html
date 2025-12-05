@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 越南僑生赴臺升學全攻略</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 0.5px, #f8fafc 0.5px);
+            background-size: 10px 10px;
+        }
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 text-sm md:text-base leading-relaxed">
+
+    <!-- Compact Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow border-b border-gray-200 h-16 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+            <div class="flex justify-between items-center h-full">
+                <!-- Logo Area -->
+                <div class="flex items-center gap-2">
+                    <div class="w-9 h-9 bg-blue-600 rounded flex items-center justify-center text-white font-bold text-sm">TW</div>
+                    <span class="font-bold text-xl text-gray-800 tracking-tight">海聯會講座</span>
+                </div>
+                
+                <!-- Desktop Links (Even Larger Text) -->
+                <div class="hidden md:flex space-x-8 text-lg font-bold">
+                    <a href="#why-taiwan" class="text-gray-600 hover:text-blue-600 px-2 py-1 rounded hover:bg-gray-50 transition">優勢</a>
+                    <a href="#channels" class="text-gray-600 hover:text-blue-600 px-2 py-1 rounded hover:bg-gray-50 transition">升學管道</a>
+                    <a href="#tools" class="text-gray-600 hover:text-blue-600 px-2 py-1 rounded hover:bg-gray-50 transition">工具</a>
+                    <a href="#financial" class="text-gray-600 hover:text-blue-600 px-2 py-1 rounded hover:bg-gray-50 transition">獎助學金</a>
+                    <a href="#qa" class="text-gray-600 hover:text-blue-600 px-2 py-1 rounded hover:bg-gray-50 transition">Q&A</a>
+                </div>
+
+                <!-- CTA Button (Scaled Up) -->
+                <div class="hidden md:block">
+                    <a href="#checklist" class="text-base bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition shadow-sm font-bold">
+                        備考清單
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 p-2 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Compact Mobile Menu (Larger Text) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg transition-all duration-200 ease-in-out">
+            <div class="grid grid-cols-3 gap-1 p-2 text-sm font-medium text-center">
+                <a href="#why-taiwan" class="block p-2 text-gray-700 bg-gray-50 rounded hover:bg-blue-50 active:bg-blue-100">優勢</a>
+                <a href="#channels" class="block p-2 text-gray-700 bg-gray-50 rounded hover:bg-blue-50 active:bg-blue-100">管道</a>
+                <a href="#tools" class="block p-2 text-gray-700 bg-gray-50 rounded hover:bg-blue-50 active:bg-blue-100">工具</a>
+                <a href="#financial" class="block p-2 text-gray-700 bg-gray-50 rounded hover:bg-blue-50 active:bg-blue-100">獎學金</a>
+                <a href="#qa" class="block p-2 text-gray-700 bg-gray-50 rounded hover:bg-blue-50 active:bg-blue-100">Q&A</a>
+                <a href="#checklist" class="block p-2 text-blue-700 bg-blue-50 rounded font-bold active:bg-blue-100">清單</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Compact Hero Section -->
+    <header class="pt-28 pb-10 hero-pattern border-b border-gray-200">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            
+            <!-- Audio Player Controller (Blue Hover Effect) -->
+            <div id="audio-controller" class="inline-flex items-center gap-3 bg-white border border-gray-200 rounded-full px-6 py-3 mb-8 shadow-md cursor-pointer hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 group select-none transform hover:-translate-y-0.5">
+                <span id="audio-status-dot" class="w-3 h-3 rounded-full bg-red-500 shadow-sm transition-colors"></span>
+                <div class="text-base font-bold text-gray-700 group-hover:text-white flex items-center gap-2 transition-colors" id="audio-label">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <span>播放海聯會主任演講錄音</span>
+                </div>
+                <!-- Hidden Audio Element -->
+                <audio id="lecture-audio" preload="none">
+                    <source src="2025-12-05-海聯會主任演講.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <!-- Title (Magnified) -->
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight leading-tight">
+                2025 越南僑生<br class="md:hidden"><span class="text-blue-600">赴臺升學攻略</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg text-gray-600 mb-8 font-medium">
+                海聯會主委指點迷津：掌握「僑考」優勢，善用「名額流用」機制，前進理想大學。
+            </p>
+            <div class="flex justify-center gap-4 text-base font-medium flex-wrap">
+                <a href="#channels" class="px-6 py-2.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition shadow-lg shadow-gray-200/50">比較升學管道</a>
+                <a href="#tools" class="px-6 py-2.5 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition shadow-sm">查詢校系名額</a>
+                <a href="2025-12-05_講座-逐字稿.txt" target="_blank" class="px-6 py-2.5 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition shadow-sm flex items-center gap-2">
+                    <span>📄</span> 講座逐字稿
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content Grid Layout -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left Column: Main Info (8 cols) -->
+        <main class="lg:col-span-8 space-y-8">
+            
+            <!-- Section: Why Taiwan (Grid Cards) -->
+            <section id="why-taiwan" class="scroll-mt-24">
+                <div class="flex items-center gap-3 mb-4">
+                    <h2 class="text-xl font-bold text-gray-900">Why Taiwan? 核心優勢</h2>
+                    <div class="h-px bg-gray-200 flex-grow"></div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:border-blue-300 transition">
+                        <div class="text-blue-600 font-bold mb-1 text-lg">產業前沿</div>
+                        <p class="text-xs text-gray-500 mb-2">ASUS, Acer, AI, 半導體</p>
+                        <p class="text-gray-700 text-sm">Made in Taiwan 品牌連結全球科技鏈，學歷含金量高，IMD 競爭力世界第六。</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:border-green-300 transition">
+                        <div class="text-green-600 font-bold mb-1 text-lg">高 CP 值</div>
+                        <p class="text-xs text-gray-500 mb-2">學費親民 ‧ 品質優異</p>
+                        <p class="text-gray-700 text-sm">講座強調「七百讚，好便宜」。搭配時薪 196 元的打工機會，生活負擔輕。</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:border-purple-300 transition">
+                        <div class="text-purple-600 font-bold mb-1 text-lg">多元學制</div>
+                        <p class="text-xs text-gray-500 mb-2">雙聯學位 ‧ 交換學生</p>
+                        <p class="text-gray-700 text-sm">跨領域學程、微學程及全英文 EMI 課程豐富，僑生具語言優勢。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Channels Comparison (Table/Cards) -->
+            <section id="channels" class="scroll-mt-24">
+                <div class="flex items-center gap-3 mb-4">
+                    <h2 class="text-xl font-bold text-gray-900">升學管道比較表</h2>
+                    <div class="h-px bg-gray-200 flex-grow"></div>
+                </div>
+                
+                <div class="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100">
+                        <!-- Col 1 -->
+                        <div class="p-5 bg-blue-50/30">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="font-bold text-gray-900">個人申請</h3>
+                                <span class="text-[10px] px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full">海聯會</span>
+                            </div>
+                            <div class="text-xs text-gray-500 mb-3">審查導向 (備審資料)</div>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li>• 志願數：<strong>4 個</strong></li>
+                                <li>• 時程：約 11-12 月</li>
+                                <li class="text-red-600 font-medium text-xs bg-red-50 p-1 rounded">• 關鍵：1/06 前按「完成報名」</li>
+                            </ul>
+                        </div>
+                        <!-- Col 2 -->
+                        <div class="p-5 bg-yellow-50/50 relative">
+                            <div class="absolute top-0 right-0 bg-yellow-400 text-yellow-900 text-[10px] px-2 py-0.5 font-bold">推薦</div>
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="font-bold text-gray-900">聯合分發 (僑考)</h3>
+                                <span class="text-[10px] px-2 py-0.5 bg-indigo-100 text-indigo-700 rounded-full">海聯會</span>
+                            </div>
+                            <div class="text-xs text-gray-500 mb-3">成績導向 (學科測驗)</div>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li>• 志願數：<strong>70 個</strong></li>
+                                <li>• 時程：約 2 月報名 / 4 月考</li>
+                                <li class="text-xs bg-white p-1 rounded border border-gray-100">• 優勢：名額多，堅持易上國立</li>
+                            </ul>
+                        </div>
+                        <!-- Col 3 -->
+                        <div class="p-5">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="font-bold text-gray-900">各校單招</h3>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 text-gray-600 rounded-full">獨立辦理</span>
+                            </div>
+                            <div class="text-xs text-gray-500 mb-3">規則依各校簡章</div>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li>• 志願數：不限 (多校申請)</li>
+                                <li>• 適合：鎖定特定學校者</li>
+                                <li class="text-xs text-gray-500">• 2/28 前錄取將剔除聯招資格</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Tools -->
+            <section id="tools" class="scroll-mt-24">
+                <div class="flex items-center gap-3 mb-4">
+                    <h2 class="text-xl font-bold text-gray-900">實用工具：線上博覽會</h2>
+                    <div class="h-px bg-gray-200 flex-grow"></div>
+                </div>
+                <div class="bg-gray-900 text-white rounded-lg p-6 flex flex-col sm:flex-row items-center gap-6 shadow-md">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg mb-2 text-blue-300">不知道怎麼選系？</h3>
+                        <p class="text-gray-300 text-sm mb-4">善用「越南線上臺灣高等教育展」網站，高二即可開始探索。</p>
+                        <div class="grid grid-cols-2 gap-3 text-xs">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 bg-green-400 rounded-full"></span> 找志向測驗
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 bg-green-400 rounded-full"></span> 我的專區收藏
+                            </div>
+                            <div class="flex items-center gap-2 col-span-2">
+                                <span class="w-2 h-2 bg-red-400 rounded-full"></span> 名額查詢 (分清個申/聯分名額)
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Placeholder QR Code Area -->
+                    <div class="bg-white p-3 rounded text-gray-900 text-center shrink-0">
+                        <div class="w-20 h-20 bg-gray-200 mb-1 mx-auto flex items-center justify-center text-xs text-gray-400">QR Code</div>
+                        <span class="text-[10px] font-bold">掃描進入博覽會</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Financial (Compact) -->
+            <section id="financial" class="scroll-mt-24">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-red-50 p-4 rounded-lg border border-red-100">
+                        <h4 class="font-bold text-red-800 mb-1">教育部獎學金</h4>
+                        <div class="text-2xl font-bold text-red-600">30萬<span class="text-sm text-gray-500 font-normal">/年</span></div>
+                        <p class="text-xs text-red-700 mt-1">清寒/優秀僑生 (依僑考排名)</p>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                        <h4 class="font-bold text-blue-800 mb-1">合法工讀薪資</h4>
+                        <div class="text-2xl font-bold text-blue-600">196元<span class="text-sm text-gray-500 font-normal">/時</span></div>
+                        <p class="text-xs text-blue-700 mt-1">2025新制 (週限20hr)</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Right Column: Sidebar (Checklist & Q&A) (4 cols) -->
+        <aside class="lg:col-span-4 space-y-6">
+            
+            <!-- Sticky Container -->
+            <div class="sticky top-20 space-y-6">
+                
+                <!-- Checklist Card -->
+                <div id="checklist" class="bg-white rounded-lg border border-blue-100 shadow-md overflow-hidden scroll-mt-28">
+                    <div class="bg-blue-600 px-4 py-3">
+                        <h3 class="font-bold text-white text-sm flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                            行動清單 (Checklist)
+                        </h3>
+                    </div>
+                    <div class="p-4 bg-blue-50/50">
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            <li class="flex gap-2">
+                                <input type="checkbox" class="mt-1 text-blue-600 rounded">
+                                <span>11年級：列出 3 個領域及對應學校。</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <input type="checkbox" class="mt-1 text-blue-600 rounded">
+                                <span>註冊線上博覽會，做「找志向」測驗。</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <input type="checkbox" class="mt-1 text-blue-600 rounded">
+                                <span>12年級：1/06 前完成個申報名 (按紅色鈕)。</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <input type="checkbox" class="mt-1 text-blue-600 rounded">
+                                <span>查詢目標科系是否有名額流用機制。</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <input type="checkbox" class="mt-1 text-blue-600 rounded">
+                                <span>準備 2026 年 2 月報名僑考。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Compact Q&A -->
+                <div id="qa" class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm scroll-mt-28">
+                    <h3 class="font-bold text-gray-900 mb-3 text-sm">快速 Q&A</h3>
+                    <div class="space-y-2">
+                        <details class="group text-xs">
+                            <summary class="cursor-pointer font-medium text-blue-700 hover:text-blue-900 list-none flex justify-between">
+                                Q: 聯合分發同分怎麼辦？
+                                <span class="text-gray-400 group-open:rotate-180 transition">▼</span>
+                            </summary>
+                            <p class="mt-1 text-gray-600 pl-2 border-l-2 border-gray-200">依科目順序比較。極端狀況海聯會將爭取增額，不因此落榜。</p>
+                        </details>
+                        <hr class="border-gray-100">
+                        <details class="group text-xs">
+                            <summary class="cursor-pointer font-medium text-blue-700 hover:text-blue-900 list-none flex justify-between">
+                                Q: 個申錄取還能考僑考嗎？
+                                <span class="text-gray-400 group-open:rotate-180 transition">▼</span>
+                            </summary>
+                            <p class="mt-1 text-gray-600 pl-2 border-l-2 border-gray-200">通常不行，海聯會是「錄取即分發」。建議最想去的排個申前段，或留給聯分。</p>
+                        </details>
+                        <hr class="border-gray-100">
+                        <details class="group text-xs">
+                            <summary class="cursor-pointer font-medium text-blue-700 hover:text-blue-900 list-none flex justify-between">
+                                Q: 僑生資格怎麼審？
+                                <span class="text-gray-400 group-open:rotate-180 transition">▼</span>
+                            </summary>
+                            <p class="mt-1 text-gray-600 pl-2 border-l-2 border-gray-200">由僑委會審。建議「先報名再審認」以免錯過時效，風險最低。</p>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Warning Box -->
+                <div class="bg-amber-50 rounded-lg p-4 border border-amber-200 text-xs">
+                    <strong class="text-amber-800 block mb-1">⚠️ 錄取衝突注意</strong>
+                    <p class="text-amber-700">若單招在 2/28 前錄取且學校上報，將自動剔除聯招資格。請建立「錄取即就讀」觀念。</p>
+                </div>
+
+            </div>
+        </aside>
+    </div>
+
+    <!-- Minimal Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-10 py-6">
+        <div class="max-w-6xl mx-auto px-4 text-center text-xs text-gray-500">
+            <p>資料來源：2025-12-05 越南僑生赴臺升學講座（海外聯招會）</p>
+            <p class="mt-1">&copy; 2025 Study in Taiwan Guide.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Logic
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const links = menu.querySelectorAll('a');
+
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                menu.classList.toggle('hidden');
+            });
+
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!menu.contains(e.target) && !btn.contains(e.target)) {
+                    menu.classList.add('hidden');
+                }
+            });
+
+            // Audio Player Logic
+            const audioController = document.getElementById('audio-controller');
+            const audio = document.getElementById('lecture-audio');
+            const dot = document.getElementById('audio-status-dot');
+            const label = document.getElementById('audio-label');
+            
+            // Icon SVGs
+            const playIcon = `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
+            const pauseIcon = `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`;
+
+            audioController.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play();
+                    dot.classList.remove('bg-red-500');
+                    dot.classList.add('bg-green-500', 'animate-pulse');
+                    label.innerHTML = `${pauseIcon} <span>演講播放中 (點擊暫停)</span>`;
+                    label.classList.add('text-blue-600');
+                } else {
+                    audio.pause();
+                    dot.classList.add('bg-red-500');
+                    dot.classList.remove('bg-green-500', 'animate-pulse');
+                    label.innerHTML = `${playIcon} <span>播放海聯會主任演講錄音</span>`;
+                    label.classList.remove('text-blue-600');
+                }
+            });
+
+            // Reset when audio ends
+            audio.addEventListener('ended', () => {
+                dot.classList.add('bg-red-500');
+                dot.classList.remove('bg-green-500', 'animate-pulse');
+                label.innerHTML = `${playIcon} <span>播放海聯會主任演講錄音</span>`;
+                label.classList.remove('text-blue-600');
+            });
+        });
+    </script>
+
+</body>
+</html>
