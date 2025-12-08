@@ -125,9 +125,8 @@
             <!-- Full Audio Player Controller -->
             <div class="bg-white border border-gray-200 rounded-2xl p-4 mb-8 shadow-md max-w-lg mx-auto">
                 <!-- Title Row -->
-                <div class="flex items-center gap-2 mb-3">
-                    <span class="w-2 h-2 rounded-full bg-red-500 shadow-sm" id="audio-status-dot"></span>
-                    <span class="text-sm font-bold text-gray-700">海聯會主任演講錄音</span>
+                <div class="flex items-center justify-center gap-2 mb-3">
+                    <span class="text-xl font-bold text-gray-700">海聯會主任演講錄音</span>
                 </div>
                 
                 <!-- Progress Bar -->
@@ -165,7 +164,7 @@
                 
                 <!-- Hidden Audio Element -->
                 <audio id="lecture-audio" preload="metadata">
-                    <source src="#" type="audio/mpeg">
+                    <source src="壓縮-2025-12-05-海聯會主任演講.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             </div>
@@ -456,7 +455,7 @@
             const forwardBtn = document.getElementById('forward-btn');
             const forwardBtnReal = document.getElementById('forward-btn-real'); // Fix button ID logic
             const audio = document.getElementById('lecture-audio');
-            const dot = document.getElementById('audio-status-dot');
+            // const dot = document.getElementById('audio-status-dot'); // Removed dot element reference
             const playIcon = document.getElementById('play-icon');
             const pauseIcon = document.getElementById('pause-icon');
             const seekSlider = document.getElementById('seek-slider');
@@ -476,14 +475,12 @@
                     audio.play().catch(e => console.log("No audio source:", e)); // Prevent error log for demo
                     playIcon.classList.add('hidden');
                     pauseIcon.classList.remove('hidden');
-                    dot.classList.remove('bg-red-500');
-                    dot.classList.add('bg-green-500', 'animate-pulse');
+                    // Removed dot logic
                 } else {
                     audio.pause();
                     playIcon.classList.remove('hidden');
                     pauseIcon.classList.add('hidden');
-                    dot.classList.add('bg-red-500');
-                    dot.classList.remove('bg-green-500', 'animate-pulse');
+                    // Removed dot logic
                 }
             });
 
@@ -526,8 +523,7 @@
             audio.addEventListener('ended', () => {
                 playIcon.classList.remove('hidden');
                 pauseIcon.classList.add('hidden');
-                dot.classList.add('bg-red-500');
-                dot.classList.remove('bg-green-500', 'animate-pulse');
+                // Removed dot logic
                 seekSlider.value = 0;
                 currentTimeElem.textContent = "00:00";
             });
