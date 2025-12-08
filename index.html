@@ -155,20 +155,17 @@
                     <!-- Forward 15s -->
                     <button id="forward-btn" class="text-gray-400 hover:text-blue-600 transition p-1" title="快進 15 秒">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> 
-                        <!-- Changed icon to fast forward style conceptually, using lightning/fast icon as placeholder or strictly use double arrow -->
-                        <!-- Actually let's use the double arrow right for consistency -->
-                         <svg class="w-6 h-6 absolute opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.933 12.8a1 1 0 000-1.6L6.6 7.2A1 1 0 005 8v8a1 1 0 001.6.8l5.333-4zM19.933 12.8a1 1 0 000-1.6l-5.333-4A1 1 0 0013 8v8a1 1 0 001.6.8l5.333-4z"></path></svg>
+                        <svg class="w-6 h-6 absolute opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.933 12.8a1 1 0 000-1.6L6.6 7.2A1 1 0 005 8v8a1 1 0 001.6.8l5.333-4zM19.933 12.8a1 1 0 000-1.6l-5.333-4A1 1 0 0013 8v8a1 1 0 001.6.8l5.333-4z"></path></svg>
                     </button>
                     <!-- Correct Forward Icon -->
                     <button id="forward-btn-real" class="text-gray-400 hover:text-blue-600 transition p-1" title="快進 15 秒">
                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-                         <!-- Let's use standard fast forward icon instead -->
                     </button>
                 </div>
                 
                 <!-- Hidden Audio Element -->
                 <audio id="lecture-audio" preload="metadata">
-                    <source src="2025-12-05-海聯會主任演講.mp3" type="audio/mpeg">
+                    <source src="#" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             </div>
@@ -181,10 +178,10 @@
                 海聯會主委指點迷津：掌握「僑考」優勢，善用「名額流用」機制，前進理想大學。
             </p>
             <div class="flex justify-center gap-4 text-base font-medium flex-wrap">
-                <a href="#channels" class="px-6 py-2.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition shadow-lg shadow-gray-200/50">比較升學管道</a>
-                <a href="#tools" class="px-6 py-2.5 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition shadow-sm">查詢校系名額</a>
-                <a href="2025-12-05_講座-逐字稿.txt" target="_blank" class="px-6 py-2.5 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition shadow-sm flex items-center gap-2">
-                    <span>📄</span> 講座逐字稿
+                <a href="#channels" class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-lg shadow-blue-200/50 hover:shadow-xl hover:-translate-y-0.5">比較升學管道</a>
+                <a href="#tools" class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-lg shadow-blue-200/50 hover:shadow-xl hover:-translate-y-0.5">查詢校系名額</a>
+                <a href="2025-12-05_講座-逐字稿.html" target="_blank" class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-lg shadow-blue-200/50 hover:shadow-xl hover:-translate-y-0.5">
+                    開啟講座逐字稿
                 </a>
             </div>
         </div>
@@ -299,7 +296,7 @@
                     
                     <!-- Updated QR Code Area (Image) -->
                     <div class="bg-white p-4 rounded-xl text-gray-900 text-center shrink-0 shadow-lg border border-gray-100 transform rotate-[-2deg] hover:rotate-0 transition duration-300">
-                        <img src="8888.png" alt="掃描進入博覽會" class="w-28 h-28 mx-auto mb-2 object-contain">
+                        <img src="https://placehold.co/150x150?text=QR+Code" alt="掃描進入博覽會" class="w-28 h-28 mx-auto mb-2 object-contain">
                         <span class="text-xs font-bold text-gray-800 block">掃描進入博覽會</span>
                     </div>
                 </div>
@@ -410,11 +407,11 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Image 1 -->
                 <div class="rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition duration-300">
-                    <img src="c1.jpg" alt="講座精彩畫面 1" class="w-full h-64 md:h-80 object-cover transform hover:scale-105 transition duration-500">
+                    <img src="https://placehold.co/800x600?text=Lecture+Photo+1" alt="講座精彩畫面 1" class="w-full h-64 md:h-80 object-cover transform hover:scale-105 transition duration-500">
                 </div>
                 <!-- Image 2 -->
                 <div class="rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition duration-300">
-                    <img src="c2.jpg" alt="講座精彩畫面 2" class="w-full h-64 md:h-80 object-cover transform hover:scale-105 transition duration-500">
+                    <img src="https://placehold.co/800x600?text=Lecture+Photo+2" alt="講座精彩畫面 2" class="w-full h-64 md:h-80 object-cover transform hover:scale-105 transition duration-500">
                 </div>
             </div>
         </div>
@@ -476,7 +473,7 @@
             // Toggle Play/Pause
             playBtn.addEventListener('click', () => {
                 if (audio.paused) {
-                    audio.play();
+                    audio.play().catch(e => console.log("No audio source:", e)); // Prevent error log for demo
                     playIcon.classList.add('hidden');
                     pauseIcon.classList.remove('hidden');
                     dot.classList.remove('bg-red-500');
