@@ -152,7 +152,7 @@
                     </button>
 
                     <!-- Forward 15s -->
-                    <button id="forward-btn" class="text-gray-400 hover:text-blue-600 transition p-1" title="快進 15 秒">
+                    <button id="forward-btn" class="text-gray-400 hover:text-blue-600 transition p-1 hidden" title="快進 15 秒">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> 
                         <svg class="w-6 h-6 absolute opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.933 12.8a1 1 0 000-1.6L6.6 7.2A1 1 0 005 8v8a1 1 0 001.6.8l5.333-4zM19.933 12.8a1 1 0 000-1.6l-5.333-4A1 1 0 0013 8v8a1 1 0 001.6.8l5.333-4z"></path></svg>
                     </button>
@@ -179,7 +179,7 @@
             <div class="flex justify-center gap-4 text-base font-medium flex-wrap">
                 <a href="#channels" class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-lg shadow-blue-200/50 hover:shadow-xl hover:-translate-y-0.5">比較升學管道</a>
                 <a href="#tools" class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-lg shadow-blue-200/50 hover:shadow-xl hover:-translate-y-0.5">查詢校系名額</a>
-                <a href="2025-12-05_講座-逐字稿.html" target="_blank" class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-lg shadow-blue-200/50 hover:shadow-xl hover:-translate-y-0.5">
+                <a href="#" onclick="alert('需下載逐字稿檔案才能開啟'); return false;" class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-lg shadow-blue-200/50 hover:shadow-xl hover:-translate-y-0.5">
                     開啟講座逐字稿
                 </a>
             </div>
@@ -295,7 +295,7 @@
                     
                     <!-- Updated QR Code Area (Image) -->
                     <div class="bg-white p-4 rounded-xl text-gray-900 text-center shrink-0 shadow-lg border border-gray-100 transform rotate-[-2deg] hover:rotate-0 transition duration-300">
-                        <img src="https://placehold.co/150x150?text=QR+Code" alt="掃描進入博覽會" class="w-28 h-28 mx-auto mb-2 object-contain">
+                        <img src="8888.png" alt="掃描進入博覽會" class="w-28 h-28 mx-auto mb-2 object-contain">
                         <span class="text-xs font-bold text-gray-800 block">掃描進入博覽會</span>
                     </div>
                 </div>
@@ -403,21 +403,28 @@
     <section class="py-12 bg-white border-t border-gray-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h3 class="text-2xl font-bold text-center text-gray-800 mb-8">講座傳單</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-2 gap-4 md:gap-6 mb-8">
                 <!-- Image 1 -->
                 <div class="rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition duration-300">
-                    <img src="c1.jpg" alt="講座精彩畫面 1" class="w-full h-80 md:h-80 object-cover transform hover:scale-105 transition duration-500">
+                    <img src="c1.jpg" alt="講座精彩畫面 1" class="w-full h-full transform hover:scale-105 transition duration-500">
                 </div>
                 <!-- Image 2 -->
                 <div class="rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition duration-300">
-                    <img src="c2.jpg" alt="講座精彩畫面 2" class="w-full h-80 md:h-80 object-cover transform hover:scale-105 transition duration-500">
+                    <img src="c2.jpg" alt="講座精彩畫面 2" class="w-full h-full transform hover:scale-105 transition duration-500">
                 </div>
+            </div>
+            <!-- Added Horizontal Line -->
+            <hr class="border-gray-200">
+            
+            <!-- Added Infographic Image -->
+            <div class="mt-8 w-full flex justify-center">
+                <img src="資訊圖表.png" alt="資訊圖表" class="w-[90%] h-auto rounded-lg shadow-lg border border-gray-100 object-contain">
             </div>
         </div>
     </section>
 
     <!-- Minimal Footer -->
-    <footer class="bg-white border-t border-gray-200 mt-0 py-6">
+    <footer class="bg-white mt-0 py-6">
         <div class="max-w-6xl mx-auto px-4 text-center text-xs text-gray-500">
             <p>資料來源：2025-12-05 越南僑生赴臺升學講座（海外聯招會）</p>
             <p class="mt-1">&copy; 2025 海聯會講座精華</p>
@@ -472,7 +479,10 @@
             // Toggle Play/Pause
             playBtn.addEventListener('click', () => {
                 if (audio.paused) {
-                    audio.play().catch(e => console.log("No audio source:", e)); // Prevent error log for demo
+                    audio.play().catch(e => {
+                        console.log("No audio source:", e); // Prevent error log for demo
+                        alert("音訊檔不存在，此為介面展示。");
+                    });
                     playIcon.classList.add('hidden');
                     pauseIcon.classList.remove('hidden');
                     // Removed dot logic
@@ -490,7 +500,9 @@
             });
 
             // Clean up html button duplication issue in previous step
-            document.getElementById('forward-btn').style.display = 'none'; // Hide duplicate
+            if(document.getElementById('forward-btn')) {
+                document.getElementById('forward-btn').style.display = 'none'; // Hide duplicate
+            }
             
             forwardBtnReal.addEventListener('click', () => {
                 audio.currentTime = Math.min(audio.duration, audio.currentTime + 15);
@@ -532,7 +544,3 @@
 
 </body>
 </html>
-
-
-
-
