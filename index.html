@@ -126,47 +126,17 @@
             <div class="bg-white border border-gray-200 rounded-2xl p-4 mb-8 shadow-md max-w-lg mx-auto">
                 <!-- Title Row -->
                 <div class="flex items-center justify-center gap-2 mb-3">
-                    <span class="text-xl font-bold text-gray-700">海聯會主任演講錄音</span>
+                    <span class="text-xl font-bold text-gray-700">海聯會僑生返台升學講座摘要</span>
                 </div>
                 
-                <!-- Progress Bar -->
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="text-xs text-gray-500 w-10 text-right font-mono" id="current-time">00:00</span>
-                    <input type="range" id="seek-slider" min="0" max="100" value="0" class="flex-grow">
-                    <span class="text-xs text-gray-500 w-10 text-left font-mono" id="duration">00:00</span>
+                <!-- 新增：MP4 影片播放器 -->
+                <div class="mb-0 w-full">
+                    <video controls class="w-full rounded-lg shadow-sm border border-gray-100 bg-black">
+                        <source src="摘要影片.mp4" type="video/mp4">
+                        您的瀏覽器不支援影片標籤。
+                    </video>
                 </div>
 
-                <!-- Controls -->
-                <div class="flex justify-center items-center gap-6">
-                    <!-- Backward 15s -->
-                    <button id="backward-btn" class="text-gray-400 hover:text-blue-600 transition p-1" title="倒退 15 秒">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0019 16V8a1 1 0 00-1.6-.8l-5.333 4zM4.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0011 16V8a1 1 0 00-1.6-.8L4.066 11.2z"></path></svg>
-                    </button>
-
-                    <!-- Play/Pause Button -->
-                    <button id="play-btn" class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-blue-700 transition shadow-lg transform hover:scale-105">
-                        <!-- Play Icon (Default) -->
-                        <svg id="play-icon" class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        <!-- Pause Icon (Hidden) -->
-                        <svg id="pause-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                    </button>
-
-                    <!-- Forward 15s -->
-                    <button id="forward-btn" class="text-gray-400 hover:text-blue-600 transition p-1 hidden" title="快進 15 秒">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> 
-                        <svg class="w-6 h-6 absolute opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.933 12.8a1 1 0 000-1.6L6.6 7.2A1 1 0 005 8v8a1 1 0 001.6.8l5.333-4zM19.933 12.8a1 1 0 000-1.6l-5.333-4A1 1 0 0013 8v8a1 1 0 001.6.8l5.333-4z"></path></svg>
-                    </button>
-                    <!-- Correct Forward Icon -->
-                    <button id="forward-btn-real" class="text-gray-400 hover:text-blue-600 transition p-1" title="快進 15 秒">
-                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-                    </button>
-                </div>
-                
-                <!-- Hidden Audio Element -->
-                <audio id="lecture-audio" preload="metadata">
-                    <source src="壓縮-2025-12-05-海聯會主任演講.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
             </div>
 
             <!-- Title (Magnified) -->
@@ -181,6 +151,11 @@
                 <a href="#tools" class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-lg shadow-blue-200/50 hover:shadow-xl hover:-translate-y-0.5">查詢校系名額</a>
                 <a href="#" onclick="alert('需下載逐字稿檔案才能開啟'); return false;" class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-lg shadow-blue-200/50 hover:shadow-xl hover:-translate-y-0.5">
                     開啟講座逐字稿
+                </a>
+                <!-- 新增：紅色錄音檔按鈕 -->
+                <a href="壓縮-2025-12-05-海聯會主任演講.mp3" target="_blank" class="px-6 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 transition shadow-lg shadow-red-200/50 hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    收聽講座錄音檔
                 </a>
             </div>
         </div>
@@ -295,7 +270,7 @@
                     
                     <!-- Updated QR Code Area (Image) -->
                     <div class="bg-white p-4 rounded-xl text-gray-900 text-center shrink-0 shadow-lg border border-gray-100 transform rotate-[-2deg] hover:rotate-0 transition duration-300">
-                        <img src="8888.png" alt="掃描進入博覽會" class="w-28 h-28 mx-auto mb-2 object-contain">
+                        <img src="https://placehold.co/150x150/2563eb/ffffff?text=QR+Code" alt="掃描進入博覽會" class="w-28 h-28 mx-auto mb-2 object-contain">
                         <span class="text-xs font-bold text-gray-800 block">掃描進入博覽會</span>
                     </div>
                 </div>
@@ -406,11 +381,11 @@
             <div class="grid grid-cols-2 gap-4 md:gap-6 mb-8">
                 <!-- Image 1 -->
                 <div class="rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition duration-300">
-                    <img src="c1.jpg" alt="講座精彩畫面 1" class="w-full h-full transform hover:scale-105 transition duration-500">
+                    <img src="https://placehold.co/600x400/e2e8f0/475569?text=Lecture+Photo+1" alt="講座精彩畫面 1" class="w-full h-full transform hover:scale-105 transition duration-500">
                 </div>
                 <!-- Image 2 -->
                 <div class="rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition duration-300">
-                    <img src="c2.jpg" alt="講座精彩畫面 2" class="w-full h-full transform hover:scale-105 transition duration-500">
+                    <img src="https://placehold.co/600x400/e2e8f0/475569?text=Lecture+Photo+2" alt="講座精彩畫面 2" class="w-full h-full transform hover:scale-105 transition duration-500">
                 </div>
             </div>
             <!-- Added Horizontal Line -->
@@ -418,7 +393,7 @@
             
             <!-- Added Infographic Image -->
             <div class="mt-8 w-full flex justify-center">
-                <img src="資訊圖表.jpg" alt="資訊圖表" class="w-[100%] h-auto rounded-lg shadow-lg border border-gray-100 object-contain">
+                <img src="https://placehold.co/800x400/e2e8f0/475569?text=Infographic+Chart" alt="資訊圖表" class="w-[100%] h-auto rounded-lg shadow-lg border border-gray-100 object-contain">
             </div>
         </div>
     </section>
@@ -455,94 +430,8 @@
                     menu.classList.add('hidden');
                 }
             });
-
-            // Audio Player Logic
-            const playBtn = document.getElementById('play-btn');
-            const backwardBtn = document.getElementById('backward-btn');
-            const forwardBtn = document.getElementById('forward-btn');
-            const forwardBtnReal = document.getElementById('forward-btn-real'); // Fix button ID logic
-            const audio = document.getElementById('lecture-audio');
-            // const dot = document.getElementById('audio-status-dot'); // Removed dot element reference
-            const playIcon = document.getElementById('play-icon');
-            const pauseIcon = document.getElementById('pause-icon');
-            const seekSlider = document.getElementById('seek-slider');
-            const currentTimeElem = document.getElementById('current-time');
-            const durationElem = document.getElementById('duration');
-            
-            // Format time helper
-            const formatTime = (seconds) => {
-                const mins = Math.floor(seconds / 60);
-                const secs = Math.floor(seconds % 60);
-                return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
-            };
-
-            // Toggle Play/Pause
-            playBtn.addEventListener('click', () => {
-                if (audio.paused) {
-                    audio.play().catch(e => {
-                        console.log("No audio source:", e); // Prevent error log for demo
-                        alert("音訊檔不存在，此為介面展示。");
-                    });
-                    playIcon.classList.add('hidden');
-                    pauseIcon.classList.remove('hidden');
-                    // Removed dot logic
-                } else {
-                    audio.pause();
-                    playIcon.classList.remove('hidden');
-                    pauseIcon.classList.add('hidden');
-                    // Removed dot logic
-                }
-            });
-
-            // Skip Buttons (Use forwardBtnReal for the visible one)
-            backwardBtn.addEventListener('click', () => {
-                audio.currentTime = Math.max(0, audio.currentTime - 15);
-            });
-
-            // Clean up html button duplication issue in previous step
-            if(document.getElementById('forward-btn')) {
-                document.getElementById('forward-btn').style.display = 'none'; // Hide duplicate
-            }
-            
-            forwardBtnReal.addEventListener('click', () => {
-                audio.currentTime = Math.min(audio.duration, audio.currentTime + 15);
-            });
-
-            // Update Progress Bar
-            audio.addEventListener('timeupdate', () => {
-                const currentTime = audio.currentTime;
-                const duration = audio.duration;
-                if (!isNaN(duration)) {
-                    seekSlider.value = (currentTime / duration) * 100;
-                    currentTimeElem.textContent = formatTime(currentTime);
-                }
-            });
-
-            // Set Duration on Load
-            audio.addEventListener('loadedmetadata', () => {
-                durationElem.textContent = formatTime(audio.duration);
-            });
-
-            // Seek functionality
-            seekSlider.addEventListener('input', () => {
-                const duration = audio.duration;
-                if (!isNaN(duration)) {
-                    audio.currentTime = (seekSlider.value / 100) * duration;
-                }
-            });
-
-            // Reset when audio ends
-            audio.addEventListener('ended', () => {
-                playIcon.classList.remove('hidden');
-                pauseIcon.classList.add('hidden');
-                // Removed dot logic
-                seekSlider.value = 0;
-                currentTimeElem.textContent = "00:00";
-            });
         });
     </script>
 
 </body>
 </html>
-
-
